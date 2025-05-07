@@ -1,24 +1,15 @@
-apply plugin: 'com.android.library'
+apply plugin: 'maven-publish'
 
-android {
-    compileSdkVersion 33
+group = 'com.github.getnexar.ffmpeg-kit'
+version = '6.0.2-android'
 
-    defaultConfig {
-        minSdkVersion 24
-        targetSdkVersion 33
-        versionCode 1
-        versionName "6.0-2"
-        consumerProguardFiles "consumer-rules.pro"
-    }
-
-    lintOptions {
-        abortOnError false
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId = 'com.github.getnexar.ffmpeg-kit'
+            artifactId = 'android-aar'
+            version = '6.0.2-android'
+            artifact file('ffmpeg-kit-min-6.0-2.aar')
+        }
     }
 }
-
-repositories {
-    google()
-    mavenCentral()
-}
-
-dependencies {}

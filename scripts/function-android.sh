@@ -92,6 +92,9 @@ APP_PLATFORM := android-${API}
 APP_CFLAGS := -O3 -DANDROID ${LTS_BUILD_FLAG}${BUILD_DATE} -Wall -Wno-deprecated-declarations -Wno-pointer-sign -Wno-switch -Wno-unused-result -Wno-unused-variable
 
 APP_LDFLAGS := -Wl,--hash-style=both
+
+# Support for 16KB page size in Android 15
+APP_SUPPORT_FLEXIBLE_PAGE_SIZES := true
 EOF
 }
 

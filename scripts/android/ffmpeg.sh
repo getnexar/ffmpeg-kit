@@ -27,6 +27,8 @@ HOST=$(get_host)
 export CFLAGS=$(get_cflags "${LIB_NAME}")
 export CXXFLAGS=$(get_cxxflags "${LIB_NAME}")
 export LDFLAGS=$(get_ldflags "${LIB_NAME}")
+# Add flags for 16KB page size support
+export LDFLAGS="$LDFLAGS -Wl,--no-rosegment -Wl,-z,max-page-size=0x4000"
 export PKG_CONFIG_LIBDIR="${INSTALL_PKG_CONFIG_DIR}"
 
 cd "${BASEDIR}"/src/"${LIB_NAME}" 1>>"${BASEDIR}"/build.log 2>&1 || return 1

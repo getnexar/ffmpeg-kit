@@ -47,6 +47,19 @@ android {
             withSourcesJar()
         }
     }
+
+    packagingOptions {
+        // Exclude non-NEON .so files from armeabi-v7a to reduce size
+        // This keeps only the *_neon.so files which are optimized for most modern devices
+        exclude '/lib/armeabi-v7a/libavcodec.so'
+        exclude '/lib/armeabi-v7a/libavdevice.so'
+        exclude '/lib/armeabi-v7a/libavfilter.so'
+        exclude '/lib/armeabi-v7a/libavformat.so'
+        exclude '/lib/armeabi-v7a/libavutil.so'
+        exclude '/lib/armeabi-v7a/libffmpegkit.so'
+        exclude '/lib/armeabi-v7a/libswresample.so'
+        exclude '/lib/armeabi-v7a/libswscale.so'
+    }
 }
 
 task javadoc(type: Javadoc) {
